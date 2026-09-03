@@ -13,14 +13,14 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-white flex items-center justify-center px-6 py-10">
+    <div className="h-full bg-white flex items-center justify-center px-6 py-10">
       <div className="w-full max-w-md">
 
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <p className="mt-2 text-gray-500">Create your Ride Along account </p>
         </div>
 
-        <div className="border border-gray-200 rounded-xl p-8 shadow-sm">
+        <div className="border border-gray-200 rounded-xl p-6 shadow-sm">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-2 gap-4">
               <div>
