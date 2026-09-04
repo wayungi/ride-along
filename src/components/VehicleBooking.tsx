@@ -135,7 +135,7 @@ const VehicleBooking = ({vehicle}: VehicleBookingProps) => {
             <span>Rental</span>
 
             <span>
-              ${rentalCost.toFixed(2)}
+              Shs {rentalCost.toFixed(2)}
             </span>
           </div>
 
@@ -143,7 +143,7 @@ const VehicleBooking = ({vehicle}: VehicleBookingProps) => {
             <span>Estimated fuel</span>
 
             <span>
-              ${fuelCost.toFixed(2)}
+              Shs {fuelCost.toFixed(2)}
             </span>
           </div>
 
