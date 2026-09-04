@@ -4,7 +4,7 @@ import AppLayout from '../layouts/AppLayout'
 import Home from '../pages/Home'
 import Login from '../components/Login'
 import Register from '../components/Register'
-import CarDetails from '../pages/CarDetails'
+import CarDetails from '../pages/VehicleProfile'
 import Dashboard from '../pages/Dashboard'
 import Profile from '../pages/Profile'
 

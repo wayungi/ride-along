@@ -9,7 +9,7 @@ export interface Vehicle {
   available: boolean;
 }
 
-export interface VehicleDetails extends Vehicle {
+export interface VehicleInfo extends Vehicle {
   images: string[];
   insuranceExpiry: string;
   nextServiceDate: string;
