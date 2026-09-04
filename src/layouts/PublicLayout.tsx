@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 
 const MainLayout = () => {
   return (
-    <div className="h-screen bg-gray-50 overflow-hidden">
+    <div className="h-screen bg-gray-50">
       <Navbar />
       <main className="h-[calc(100vh-4rem)]">
         <Outlet />
