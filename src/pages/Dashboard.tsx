@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   /* will ge user role from auth context: const { user } = useAuth();*/
    const user: { roleCode: UserRole } = {
-        roleCode: "CUSTOMER"
+        roleCode: "OWNER"
     };
 
   switch (user?.roleCode) {

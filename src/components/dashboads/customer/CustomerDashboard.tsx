@@ -116,42 +116,22 @@ const CustomerDashboard = () => {
 
   return (
     <div className="space-y-6 bg-gray-100 px-6 pb-6">
-
       <div className="h-16 flex flex-col justify-center px-4 border-b border-gray-200">
-        <h1 className="text-lg font-bold text-gray-900 leading-tight">
-          Customer Dashboard
-        </h1>
-
-        <p className="text-xs text-gray-500 leading-tight mt-0.5">
-          View your recent rentals and trip details.
-        </p>
+        <h1 className="text-lg font-bold text-gray-900 leading-tight">Car Owner Dashboard</h1>
+        <p className="text-xs text-gray-500 leading-tight mt-0.5">View your rental history.</p>
       </div>
 
+      <div className="">
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6">
-        {/* LEFT */}
-        <section className="bg-white p-5 rounded-lg">
-          <div className="flex justify-between text-sm font-medium pb-4">
-            <h2>Rental Details </h2>
-          </div>
-          <RentalDetails rental={selectedRental} />
-        </section>
+        <div>
+
+        </div>
+
+        <div>
+          <h2>My Vehicles</h2>
 
 
-        {/* RIGHT */}
-        <section className="bg-white p-5 rounded-lg">
-          <div className="flex justify-between text-sm font-medium pb-4">
-            <h2>Recent Transactions</h2>
-            <button 
-              onClick={() => setShowAllTransactions(!showAllTransactions)}
-              className="text-blue-400">{showAllTransactions ? "Show Less" : "View All"}</button>
-          </div>
-          <Transactions  
-            rentals = {showAllTransactions ? rentals : rentals.slice(0, 5)}
-            selectedRentalId={selectedRental.id}
-            onSelect={setSelectedRental}
-          />
-        </section>
+        </div>
       </div>
     </div>
   );
