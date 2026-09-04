@@ -8,3 +8,13 @@ export interface Vehicle {
   image: string;
   available: boolean;
 }
+
+export interface VehicleInfo extends Vehicle {
+  images: string[];
+  insuranceExpiry: string;
+  nextServiceDate: string;
+  consumptionPerKm: number;
+  condition: string;
+  transmission: "Automatic" | "Manual";
+  bagSpace: string;
+}
