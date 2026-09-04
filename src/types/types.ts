@@ -18,3 +18,13 @@ export interface VehicleInfo extends Vehicle {
   transmission: "Automatic" | "Manual";
   bagSpace: string;
 }
+
+export interface Rental {
+  id: string;
+  vehicle: {id: string; name: string; image: string;};
+  destination: string;
+  destinationCoordinates: {lat: number; lng: number;};
+  pickedAt: string;
+  returnedAt: string;
+  totalPrice: number;
+}
