@@ -4,7 +4,7 @@ import AppLayout from '../layouts/AppLayout'
 import Home from '../pages/Home'
 import Login from '../components/Login'
 import Register from '../components/Register'
-import CarDetails from '../pages/VehicleProfile'
+import VehicleProfile from '../pages/VehicleProfile'
 import Dashboard from '../pages/Dashboard'
 import Profile from '../pages/Profile'
 
@@ -23,7 +23,7 @@ const AppRoutes = () => {
       {/* authenticated routes */}
       <Route element={<AppLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/rides" element={<CarDetails />} />
+        <Route path="/vehicle/:id" element={<VehicleProfile />} />
         <Route path="/profile" element={<Profile />} />
       </Route>
 

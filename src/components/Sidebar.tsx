@@ -1,30 +1,50 @@
-
+import { useState } from "react";
 import { Link, useLocation } from "react-router";
+import {
+  FaHome,
+  FaCar,
+  FaUser,
+  FaSignOutAlt,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 
 const Sidebar = () => {
   const location = useLocation();
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const isActive = (path: string) => {
     return location.pathname === path;
   };
 
   return (
-    <aside className="w-64 h-screen bg-white border-r border-gray-200 flex flex-col">
-
+    <aside
+      className={`h-screen bg-white border-r border-gray-200 flex flex-col transition-all duration-300
+        ${isCollapsed ? "w-20" : "w-64"}
+      `}
+    >
       {/* Logo */}
-      <div className="h-16 flex items-center px-6 border-b border-gray-200">
-        <Link
-          to="/dashboard"
-          className="text-2xl font-bold text-blue-600"
+      <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200">
+        {!isCollapsed && (
+          <Link
+            to="/dashboard"
+            className="text-2xl font-bold text-blue-600"
+          >
+            Ride Along
+          </Link>
+        )}
+
+        <button
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          className="p-2 rounded-lg hover:bg-gray-100"
         >
-          Ride Along
-        </Link>
+          {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
+        </button>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-4 py-6 space-y-2">
+      <nav className="flex-1 px-3 py-6 space-y-2">
 
-        {/* Dashboard */}
         <Link
           to="/dashboard"
           className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition
@@ -35,24 +55,26 @@ const Sidebar = () => {
             }
           `}
         >
-          <span>Dashboard</span>
+          <FaHome className="text-lg min-w-[20px]" />
+
+          {!isCollapsed && <span>Dashboard</span>}
         </Link>
 
-        {/* Rides */}
         <Link
-          to="/rides"
+          to="/vehicle/1"
           className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition
             ${
-              isActive("/rides")
+              isActive("/vehicle/1")
                 ? "bg-blue-50 text-blue-600"
                 : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
             }
           `}
         >
-          <span>Rides</span>
+          <FaCar className="text-lg min-w-[20px]" />
+
+          {!isCollapsed && <span>Vehicle Profile</span>}
         </Link>
 
-        {/* Profile */}
         <Link
           to="/profile"
           className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition
@@ -63,23 +85,24 @@ const Sidebar = () => {
             }
           `}
         >
-          <span>Profile</span>
+          <FaUser className="text-lg min-w-[20px]" />
+
+          {!isCollapsed && <span>Profile</span>}
         </Link>
 
       </nav>
 
-      {/* Bottom Section */}
-      <div className="p-4 border-t border-gray-200">
-
+      {/* Bottom */}
+      <div className="p-3 border-t border-gray-200">
         <button
           type="button"
-          className="w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition"
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition"
         >
-          Logout
+          <FaSignOutAlt className="text-lg min-w-[20px]" />
+
+          {!isCollapsed && <span>Logout</span>}
         </button>
-
       </div>
-
     </aside>
   );
 };

@@ -115,16 +115,18 @@ const CustomerDashboard = () => {
   const [showAllTransactions, setShowAllTransactions] = useState(false);
 
   return (
-    <div className="space-y-6 bg-gray-100 p-6">
+    <div className="space-y-6 bg-gray-100 px-6 pb-6">
 
-      <div>
-        <h1 className="text-2xl font-bold text-gray-900">
+      <div className="h-16 flex flex-col justify-center px-4 border-b border-gray-200">
+        <h1 className="text-lg font-bold text-gray-900 leading-tight">
           Customer Dashboard
         </h1>
-        <p className="text-gray-500 mt-1">
+
+        <p className="text-xs text-gray-500 leading-tight mt-0.5">
           View your recent rentals and trip details.
         </p>
       </div>
+
 
       <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6">
         {/* LEFT */}

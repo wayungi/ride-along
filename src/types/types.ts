@@ -24,7 +24,7 @@ export interface Rental {
   vehicle: {id: string; name: string; image: string;};
   destination: string;
   destinationCoordinates: {lat: number; lng: number;};
-  pickedAt: string;
-  returnedAt: string;
+  pickedAt: number;
+  returnedAt: number;
   totalPrice: number;
 }
