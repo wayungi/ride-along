@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import type { VehicleDetails } from "../types/types";
+import type { VehicleDetails } from "../../types/types";
 
 interface Destination {
   latitude: number;
@@ -152,7 +152,7 @@ const VehicleBooking = ({vehicle}: VehicleBookingProps) => {
               <span>Total</span>
 
               <span className="text-blue-700">
-                ${totalCost.toFixed(2)}
+                Shs {totalCost.toFixed(2)}
               </span>
             </div>
           </div>

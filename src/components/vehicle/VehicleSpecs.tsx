@@ -8,7 +8,7 @@ import {
   FaSuitcase,
   FaCheckCircle,
 } from "react-icons/fa";
-import type { VehicleDetails } from "../types/types";
+import type { VehicleDetails } from "../../types/types";
 
 interface VehicleDetailsProps {
   vehicle: VehicleDetails;

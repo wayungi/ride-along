@@ -1,10 +1,13 @@
-import type { Vehicle } from "../types/types"
+import type { Vehicle } from "../../types/types"
+import { useNavigate } from "react-router";
 
 interface VehicleCardProps {
   vehicle: Vehicle;
 }
 
 const VehicleCard = ({ vehicle }: VehicleCardProps) => {
+
+  const navigate = useNavigate();
   const {
     name,
     type,
@@ -15,8 +18,12 @@ const VehicleCard = ({ vehicle }: VehicleCardProps) => {
     available,
   } = vehicle;
 
+  const handleClick = () => navigate(`/vehicle/${vehicle.id}`)
+
   return (
-    <div className="overflow-hidden rounded-xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-lg">
+    <div 
+      onClick={handleClick}
+      className="overflow-hidden rounded-xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-lg">
       <img
         src={image}
         alt={name}

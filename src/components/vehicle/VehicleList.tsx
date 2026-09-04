@@ -1,5 +1,5 @@
 import VehicleCard from "./VehicleCard";
-import type { Vehicle } from "../types/types";
+import type { Vehicle } from "../../types/types";
 
 interface VehicleListProps {
   vehicles: Vehicle[];
@@ -23,10 +23,12 @@ const VehicleList = ({ vehicles }: VehicleListProps) => {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {vehicles.map((vehicle) => (
-        <VehicleCard
-          key={vehicle.id}
-          vehicle={vehicle}
-        />
+        <>
+          <VehicleCard
+            key={vehicle.id}
+            vehicle={vehicle}
+          />
+        </>
       ))}
     </div>
   );
