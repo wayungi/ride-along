@@ -1,5 +1,5 @@
 import VehicleCard from "./VehicleCard";
-import type { Vehicle } from "../types/vehicle";
+import type { Vehicle } from "../types/types";
 
 interface VehicleListProps {
   vehicles: Vehicle[];
