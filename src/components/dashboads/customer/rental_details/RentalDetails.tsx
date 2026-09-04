@@ -1,3 +1,6 @@
+import RentalMap from "../../../map/RentalMap";
+import type { Rental } from "../../../../types/types";
+
 interface RentalDetailsProps {
   rental: Rental;
 }
@@ -8,17 +11,11 @@ const RentalDetails = ({ rental }: RentalDetailsProps) => {
 
       {/* Map */}
       <div className="h-72 bg-gray-100 relative flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-4xl mb-2">📍</div>
-
-          <p className="font-semibold text-gray-800">
-            {rental.destination}
-          </p>
-
-          <p className="text-sm text-gray-500">
-            Destination
-          </p>
-        </div>
+        <RentalMap
+          latitude = {rental.destinationCoordinates.lat}
+          longitude = {rental.destinationCoordinates.lng}
+          destination = {rental.destination}
+         />
       </div>
 
       {/* Vehicle information */}

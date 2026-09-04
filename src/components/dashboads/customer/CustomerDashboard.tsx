@@ -8,8 +8,8 @@ const rentals: Rental[] = [
     {
         "id": "1",
         vehicle: {id: "1", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
-        destination: "Jinja",
-        destinationCoordinates: {lat: 32.1,  lng: 0.16},
+        destination: "Kampala",
+        destinationCoordinates: { lat: 0.3476, lng: 32.5825 },
         pickedAt: 1788521023901,
         returnedAt: 1788521023901,
         totalPrice: 400000
@@ -19,7 +19,7 @@ const rentals: Rental[] = [
         "id": "2",
         vehicle: {id: "2", name: "benz", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2"},
         destination: "Jinja",
-        destinationCoordinates: {lat: 32.1,  lng: 0.16},
+        destinationCoordinates: { lat: 0.4479, lng: 33.2026 },
         pickedAt: 1788521023901,
         returnedAt: 1788521023901,
         totalPrice: 400000
@@ -28,8 +28,8 @@ const rentals: Rental[] = [
     {
         "id": "3",
         vehicle: {id: "3", name: "benz", image: "https://images.unsplash.com/photo-1550355291-bbee04a92027"},
-        destination: "Jinja",
-        destinationCoordinates: {lat: 32.1,  lng: 0.16},
+        destination: "Entebbe",
+        destinationCoordinates: { lat: 0.0512, lng: 32.4637 },
         pickedAt: 1788521023901,
         returnedAt: 1788521023901,
         totalPrice: 400000
@@ -38,8 +38,8 @@ const rentals: Rental[] = [
     {
         "id": "4",
         vehicle: {id: "4", name: "benz", image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf"},
-        destination: "Jinja",
-        destinationCoordinates: {lat: 32.1,  lng: 0.16},
+        destination: "Mbarara",
+        destinationCoordinates: { lat: -0.6072, lng: 30.6545 },
         pickedAt: 1788521023901,
         returnedAt: 1788521023901,
         totalPrice: 400000
@@ -48,8 +48,8 @@ const rentals: Rental[] = [
     {
         "id": "5",
         vehicle: {id: "5", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
-        destination: "Jinja",
-        destinationCoordinates: {lat: 32.1,  lng: 0.16},
+        destination: "Fort Portal",
+        destinationCoordinates: { lat: 0.6710, lng: 30.2750 },
         pickedAt: 1788521023901,
         returnedAt: 1788521023901,
         totalPrice: 400000
@@ -58,8 +58,8 @@ const rentals: Rental[] = [
     {
         "id": "1",
         vehicle: {id: "1", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
-        destination: "Jinja",
-        destinationCoordinates: {lat: 32.1,  lng: 0.16},
+        destination: "Mbale",
+        destinationCoordinates: { lat: 1.0806, lng: 34.1750 },
         pickedAt: 1788521023901,
         returnedAt: 1788521023901,
         totalPrice: 400000
@@ -68,8 +68,8 @@ const rentals: Rental[] = [
     {
         "id": "2",
         vehicle: {id: "2", name: "benz", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2"},
-        destination: "Jinja",
-        destinationCoordinates: {lat: 32.1,  lng: 0.16},
+        destination: "Gulu",
+        destinationCoordinates: { lat: 2.7746, lng: 32.2990 },
         pickedAt: 1788521023901,
         returnedAt: 1788521023901,
         totalPrice: 400000
@@ -78,8 +78,8 @@ const rentals: Rental[] = [
     {
         "id": "3",
         vehicle: {id: "3", name: "benz", image: "https://images.unsplash.com/photo-1550355291-bbee04a92027"},
-        destination: "Jinja",
-        destinationCoordinates: {lat: 32.1,  lng: 0.16},
+        destination: "Masaka",
+        destinationCoordinates: { lat: -0.3403, lng: 31.7340 },
         pickedAt: 1788521023901,
         returnedAt: 1788521023901,
         totalPrice: 400000
@@ -88,8 +88,8 @@ const rentals: Rental[] = [
     {
         "id": "4",
         vehicle: {id: "4", name: "benz", image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf"},
-        destination: "Jinja",
-        destinationCoordinates: {lat: 32.1,  lng: 0.16},
+        destination: "Kabale",
+        destinationCoordinates: { lat: -1.2486, lng: 29.9899 },
         pickedAt: 1788521023901,
         returnedAt: 1788521023901,
         totalPrice: 400000
@@ -98,21 +98,21 @@ const rentals: Rental[] = [
     {
         "id": "5",
         vehicle: {id: "5", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
-        destination: "Jinja",
-        destinationCoordinates: {lat: 32.1,  lng: 0.16},
+        destination: "Kasese",
+        destinationCoordinates: { lat: 0.1833, lng: 30.0833 },
         pickedAt: 1788521023901,
         returnedAt: 1788521023901,
         totalPrice: 400000
     }
 
  ]
-  
+
+
 
 const CustomerDashboard = () => {
 
-  const [selectedRental, setSelectedRental] = useState(rentals[0]);
+  const [selectedRental, setSelectedRental] = useState<Rental>(rentals[0]);
   const [showAllTransactions, setShowAllTransactions] = useState(false);
-
 
   return (
     <div className="space-y-6 bg-gray-100 p-6">
@@ -128,14 +128,17 @@ const CustomerDashboard = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6">
         {/* LEFT */}
-        <section>
-          <h2 className="text-lg font-semibold mb-4">Rental Details </h2>
+        <section className="bg-white p-5 rounded-lg">
+          <div className="flex justify-between text-sm font-medium pb-4">
+            <h2>Rental Details </h2>
+          </div>
           <RentalDetails rental={selectedRental} />
         </section>
 
+
         {/* RIGHT */}
-        <section className="bg-white px-5 rounded-lg">
-          <div className="flex justify-between text-sm font-medium my-4">
+        <section className="bg-white p-5 rounded-lg">
+          <div className="flex justify-between text-sm font-medium pb-4">
             <h2>Recent Transactions</h2>
             <button 
               onClick={() => setShowAllTransactions(!showAllTransactions)}
