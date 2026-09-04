@@ -10,8 +10,8 @@ interface TransactionListProps {
 const TransactionList = ({rentals,selectedRentalId, onSelect }: TransactionListProps) => {
 
   return (
-    <div className="space-y-3">
-      {rentals.slice(0, 5).map((rental) => (
+    <div className="flex flex-col items-center">
+      {rentals.map((rental) => (
         <TransactionCard
           key={rental.id}
           rental={rental}
