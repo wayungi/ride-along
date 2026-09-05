@@ -7,6 +7,8 @@ export interface Vehicle {
   pricePerDay: number;
   image: string;
   available: boolean;
+  status: string; //"AVAILABLE" | "BOOKED" | "FAULTY" 
+  model: string;
 }
 
 export interface VehicleInfo extends Vehicle {
@@ -27,4 +29,11 @@ export interface Rental {
   pickedAt: number;
   returnedAt: number;
   totalPrice: number;
+}
+
+export interface VehicleOwnerInfoProps {
+  vehicle: Vehicle;
+  username: string;
+  tripCost: number;
+  status: "Available" | "Rented" | "Faulty";
 }

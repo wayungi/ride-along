@@ -1,158 +1,253 @@
 import { useState } from "react";
-import RentalDetails from "../customer/rental_details/RentalDetails";
+import type { Vehicle, Rental } from "../../../types/types";
+import VehicleList from "./vehicle/VehicleList";
 import Transactions from "../customer/transactions/Transactions";
-import type { Rental } from "../../../types/types";
+import RentalDetails from "../customer/rental_details/RentalDetails";
+import DashBoardStatCard from "../DashBoardStatCard"
 
-const rentals: Rental[] = [
 
-    {
-        "id": "1",
-        vehicle: {id: "1", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
-        destination: "Kampala",
-        destinationCoordinates: { lat: 0.3476, lng: 32.5825 },
-        pickedAt: 1788521023901,
-        returnedAt: 1788521023901,
-        totalPrice: 400000
-    },
-
-    {
-        "id": "2",
-        vehicle: {id: "2", name: "benz", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2"},
-        destination: "Jinja",
-        destinationCoordinates: { lat: 0.4479, lng: 33.2026 },
-        pickedAt: 1788521023901,
-        returnedAt: 1788521023901,
-        totalPrice: 400000
-    },
-
-    {
-        "id": "3",
-        vehicle: {id: "3", name: "benz", image: "https://images.unsplash.com/photo-1550355291-bbee04a92027"},
-        destination: "Entebbe",
-        destinationCoordinates: { lat: 0.0512, lng: 32.4637 },
-        pickedAt: 1788521023901,
-        returnedAt: 1788521023901,
-        totalPrice: 400000
-    },
+const vehicles: Vehicle[]= [
 
     {
         "id": "4",
-        vehicle: {id: "4", name: "benz", image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf"},
-        destination: "Mbarara",
-        destinationCoordinates: { lat: -0.6072, lng: 30.6545 },
-        pickedAt: 1788521023901,
-        returnedAt: 1788521023901,
-        totalPrice: 400000
+        name: "benz", 
+        type: "",
+        image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b",
+        fuelType: "Petrol",
+        seats: 5,
+        pricePerDay: 90000,
+        available: true,
+        status: "AVAILABLE", //"AVAILABLE" | "BOOKED" | "FAULTY" 
+        model: "Mercedes Benz"
     },
 
     {
         "id": "5",
-        vehicle: {id: "5", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
-        destination: "Fort Portal",
-        destinationCoordinates: { lat: 0.6710, lng: 30.2750 },
-        pickedAt: 1788521023901,
-        returnedAt: 1788521023901,
-        totalPrice: 400000
+        name: "pickup", 
+        type: "saloon",
+        image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2",
+        fuelType: "Petrol",
+        seats: 4,
+        pricePerDay: 70000,
+        available: true,
+        status: "BOOKED", //"AVAILABLE" | "BOOKED" | "FAULTY" 
+        model: "Auro"
     },
 
     {
-        "id": "1",
-        vehicle: {id: "1", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
-        destination: "Mbale",
-        destinationCoordinates: { lat: 1.0806, lng: 34.1750 },
-        pickedAt: 1788521023901,
-        returnedAt: 1788521023901,
-        totalPrice: 400000
+        "id": "7",
+        name: "Pickup", 
+        type: "",
+        image: "https://images.unsplash.com/photo-1550355291-bbee04a92027",
+        fuelType: "Diesel",
+        seats: 4,
+        pricePerDay: 99000,
+        available: true,
+        status: "FAULTY", //"AVAILABLE" | "BOOKED" | "FAULTY" 
+        model: "Taata"
     },
 
     {
-        "id": "2",
-        vehicle: {id: "2", name: "benz", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2"},
-        destination: "Gulu",
-        destinationCoordinates: { lat: 2.7746, lng: 32.2990 },
-        pickedAt: 1788521023901,
-        returnedAt: 1788521023901,
-        totalPrice: 400000
+        "id": "6",
+        name: "Pickup", 
+        type: "",
+        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf",
+        fuelType: "Diesel",
+        seats: 4,
+        pricePerDay: 99000,
+        available: true,
+        status: "FAULTY", //"AVAILABLE" | "BOOKED" | "FAULTY" 
+        model: "Taata"
     },
 
+
+
     {
-        "id": "3",
-        vehicle: {id: "3", name: "benz", image: "https://images.unsplash.com/photo-1550355291-bbee04a92027"},
-        destination: "Masaka",
-        destinationCoordinates: { lat: -0.3403, lng: 31.7340 },
-        pickedAt: 1788521023901,
-        returnedAt: 1788521023901,
-        totalPrice: 400000
+        "id": "9",
+        name: "Pickup", 
+        type: "",
+        image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b",
+        fuelType: "Diesel",
+        seats: 4,
+        pricePerDay: 99000,
+        available: true,
+        status: "FAULTY", //"AVAILABLE" | "BOOKED" | "FAULTY" 
+        model: "Taata"
     },
 
+
     {
-        "id": "4",
-        vehicle: {id: "4", name: "benz", image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf"},
-        destination: "Kabale",
-        destinationCoordinates: { lat: -1.2486, lng: 29.9899 },
-        pickedAt: 1788521023901,
-        returnedAt: 1788521023901,
-        totalPrice: 400000
+        "id": "8",
+        name: "Pickup", 
+        type: "",
+        image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b",
+        fuelType: "Diesel",
+        seats: 4,
+        pricePerDay: 99000,
+        available: true,
+        status: "FAULTY", //"AVAILABLE" | "BOOKED" | "FAULTY" 
+        model: "Taata"
     },
-
-    {
-        "id": "5",
-        vehicle: {id: "5", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
-        destination: "Kasese",
-        destinationCoordinates: { lat: 0.1833, lng: 30.0833 },
-        pickedAt: 1788521023901,
-        returnedAt: 1788521023901,
-        totalPrice: 400000
-    }
-
  ]
+
+ const rentals: Rental[] = [
+ 
+     {
+         "id": "1",
+         vehicle: {id: "1", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
+         destination: "Kampala",
+         destinationCoordinates: { lat: 0.3476, lng: 32.5825 },
+         pickedAt: 1788521023901,
+         returnedAt: 1788521023901,
+         totalPrice: 400000
+     },
+ 
+     {
+         "id": "2",
+         vehicle: {id: "2", name: "benz", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2"},
+         destination: "Jinja",
+         destinationCoordinates: { lat: 0.4479, lng: 33.2026 },
+         pickedAt: 1788521023901,
+         returnedAt: 1788521023901,
+         totalPrice: 400000
+     },
+ 
+     {
+         "id": "3",
+         vehicle: {id: "3", name: "benz", image: "https://images.unsplash.com/photo-1550355291-bbee04a92027"},
+         destination: "Entebbe",
+         destinationCoordinates: { lat: 0.0512, lng: 32.4637 },
+         pickedAt: 1788521023901,
+         returnedAt: 1788521023901,
+         totalPrice: 400000
+     },
+ 
+     {
+         "id": "4",
+         vehicle: {id: "4", name: "benz", image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf"},
+         destination: "Mbarara",
+         destinationCoordinates: { lat: -0.6072, lng: 30.6545 },
+         pickedAt: 1788521023901,
+         returnedAt: 1788521023901,
+         totalPrice: 400000
+     },
+ 
+     {
+         "id": "5",
+         vehicle: {id: "5", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
+         destination: "Fort Portal",
+         destinationCoordinates: { lat: 0.6710, lng: 30.2750 },
+         pickedAt: 1788521023901,
+         returnedAt: 1788521023901,
+         totalPrice: 400000
+     },
+ 
+     {
+         "id": "1",
+         vehicle: {id: "1", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
+         destination: "Mbale",
+         destinationCoordinates: { lat: 1.0806, lng: 34.1750 },
+         pickedAt: 1788521023901,
+         returnedAt: 1788521023901,
+         totalPrice: 400000
+     },
+ 
+     {
+         "id": "2",
+         vehicle: {id: "2", name: "benz", image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2"},
+         destination: "Gulu",
+         destinationCoordinates: { lat: 2.7746, lng: 32.2990 },
+         pickedAt: 1788521023901,
+         returnedAt: 1788521023901,
+         totalPrice: 400000
+     },
+ 
+     {
+         "id": "3",
+         vehicle: {id: "3", name: "benz", image: "https://images.unsplash.com/photo-1550355291-bbee04a92027"},
+         destination: "Masaka",
+         destinationCoordinates: { lat: -0.3403, lng: 31.7340 },
+         pickedAt: 1788521023901,
+         returnedAt: 1788521023901,
+         totalPrice: 400000
+     },
+ 
+     {
+         "id": "4",
+         vehicle: {id: "4", name: "benz", image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf"},
+         destination: "Kabale",
+         destinationCoordinates: { lat: -1.2486, lng: 29.9899 },
+         pickedAt: 1788521023901,
+         returnedAt: 1788521023901,
+         totalPrice: 400000
+     },
+ 
+     {
+         "id": "5",
+         vehicle: {id: "5", name: "benz", image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b"},
+         destination: "Kasese",
+         destinationCoordinates: { lat: 0.1833, lng: 30.0833 },
+         pickedAt: 1788521023901,
+         returnedAt: 1788521023901,
+         totalPrice: 400000
+     }
+ 
+  ]
 
 
 
 const OwnerDashboard = () => {
 
-  const [selectedRental, setSelectedRental] = useState<Rental>(rentals[0]);
+  const [showAllVehicles, setShowAllVehicles] = useState(false);
   const [showAllTransactions, setShowAllTransactions] = useState(false);
+  const [selectedRental, setSelectedRental] = useState<Rental>(rentals[0]);
+  
 
   return (
     <div className="space-y-6 bg-gray-100 px-6 pb-6">
+        <div className="h-16 flex flex-col justify-center px-4 border-b border-gray-200">
+            <h1 className="text-lg font-bold text-gray-900 leading-tight">Car Owner Dashboard</h1>
+            <p className="text-xs text-gray-500 leading-tight mt-0.5">View your rental history.</p>
+        </div>
 
-      <div className="h-16 flex flex-col justify-center px-4 border-b border-gray-200">
-        <h1 className="text-lg font-bold text-gray-900 leading-tight">
-          Customer Dashboard
-        </h1>
+        <div>
+            <DashBoardStatCard />
+        </div>
 
-        <p className="text-xs text-gray-500 leading-tight mt-0.5">
-          View your recent rentals and trip details.
-        </p>
-      </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6">
+            {/* LEFT */}
+            <section className="bg-white p-5 rounded-lg">
+                <div className="flex justify-between text-sm font-medium pb-4">
+                    <h2>Rental Details </h2>
+                </div>
+                <RentalDetails rental={selectedRental} />
+            </section>
 
+            {/* RIGHT */}
+            <section className="bg-white p-5 rounded-lg">
+                <div className="flex justify-between text-sm font-medium pb-4">
+                    <h2>Recent Transactions</h2>
+                    <button 
+                    onClick={() => setShowAllTransactions(!showAllTransactions)}
+                    className="text-blue-400">{showAllTransactions ? "Show Less" : "View All"}</button>
+                </div>
+                <Transactions  
+                    rentals = {showAllTransactions ? rentals : rentals.slice(0, 5)}
+                    selectedRentalId={selectedRental.id}
+                    onSelect={setSelectedRental}
+                />
+            </section>
+        </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6">
-        {/* LEFT */}
         <section className="bg-white p-5 rounded-lg">
           <div className="flex justify-between text-sm font-medium pb-4">
-            <h2>Rental Details </h2>
-          </div>
-          <RentalDetails rental={selectedRental} />
-        </section>
-
-
-        {/* RIGHT */}
-        <section className="bg-white p-5 rounded-lg">
-          <div className="flex justify-between text-sm font-medium pb-4">
-            <h2>Recent Transactions</h2>
+            <h2>My Cars</h2>
             <button 
-              onClick={() => setShowAllTransactions(!showAllTransactions)}
-              className="text-blue-400">{showAllTransactions ? "Show Less" : "View All"}</button>
+              onClick={() => setShowAllVehicles(!showAllVehicles)}
+              className="text-blue-400">{showAllVehicles ? "Show Less" : "View All"}</button>
           </div>
-          <Transactions  
-            rentals = {showAllTransactions ? rentals : rentals.slice(0, 5)}
-            selectedRentalId={selectedRental.id}
-            onSelect={setSelectedRental}
-          />
+          <VehicleList vehicles = {showAllVehicles ? vehicles : vehicles.slice(0, 5)} />
         </section>
-      </div>
     </div>
   );
 };

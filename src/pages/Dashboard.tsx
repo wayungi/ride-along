@@ -1,6 +1,6 @@
 import AdminDashboard from "../components/dashboads/admin/AdminDashbaord";
 import CustomerDashboard from "../components/dashboads/customer/CustomerDashboard";
-import OwnerDashboard from "../components/dashboads/customer/CustomerDashboard";
+import OwnerDashboard from "../components/dashboads/owner/OwnerDashboard";
 
 
 type UserRole = "ADMIN" | "CUSTOMER" | "OWNER";
