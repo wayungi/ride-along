@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import type { VehicleDetails } from "../../types/types";
+import type { VehicleInfo} from "../../types/types";
+import LocationPicker from "../map/LocationPicker";
 
 interface Destination {
   latitude: number;
@@ -7,7 +8,7 @@ interface Destination {
 }
 
 interface VehicleBookingProps {
-  vehicle: VehicleDetails;
+  vehicle: VehicleInfo;
 }
 
 const VehicleBooking = ({vehicle}: VehicleBookingProps) => {
@@ -15,6 +16,9 @@ const VehicleBooking = ({vehicle}: VehicleBookingProps) => {
   const [startDate, setStartDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
   const [destinations, setDestinations] = useState<Destination[]>([]);
+  const [coordinates, setCoordinates] = useState<{latitude: number; longitude: number;} | null>(null);
+  const handleLocationSelect = (latitude: number, longitude: number ) => setCoordinates({latitude, longitude,});
+  
 
   const numberOfDays = useMemo(() => {
     if (!startDate || !returnDate) {return 0; }
@@ -81,32 +85,17 @@ const VehicleBooking = ({vehicle}: VehicleBookingProps) => {
       </div>
 
       {/* Map */}
-
       <div className="mt-6">
-        <label className="mb-2 block text-sm font-medium text-gray-700">
-          Destinations
-        </label>
-
-        <div className="flex h-[350px] items-center justify-center rounded-xl bg-gray-200">
-          <div className="text-center text-gray-500">
-            <p className="font-medium">
-              Interactive Map
-            </p>
-
-            <p className="mt-1 text-sm">
-              Click on the map to add destinations
-            </p>
-          </div>
+        <label className="mb-2 block text-sm font-medium text-gray-700">Destinations</label>
+        <div className="flex h-[490px] items-center justify-center rounded-xl bg-white">
+          <LocationPicker onLocationSelect={handleLocationSelect}/>
         </div>
       </div>
 
       {/* Selected destinations */}
       {destinations.length > 0 && (
         <div className="mt-5">
-          <h3 className="font-semibold text-gray-900">
-            Selected Destinations
-          </h3>
-
+          <h3 className="font-semibold text-gray-900">Selected Destinations</h3>
           <div className="mt-3 space-y-2">
             {destinations.map(
               (destination, index) => (

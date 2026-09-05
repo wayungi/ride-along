@@ -13,6 +13,8 @@ const VehicleProfile = () => {
         seats: 5,
         pricePerDay: 55,
         image: "",
+        status: "",
+        model: "",
 
         images: [
             "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b",
@@ -50,11 +52,9 @@ const VehicleProfile = () => {
         />
 
         {/* Details */}
-
         <VehicleDetails vehicle={vehicle} />
 
         {/* Booking */}
-
         <VehicleBooking vehicle={vehicle} />
 
       </div>
