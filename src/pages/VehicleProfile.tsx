@@ -13,6 +13,8 @@ const VehicleProfile = () => {
         seats: 5,
         pricePerDay: 55,
         image: "",
+        status: "",
+        model: "",
 
         images: [
             "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b",
@@ -32,15 +34,20 @@ const VehicleProfile = () => {
     };
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-10">
+    <main className="min-h-screen bg-gray-50 px-6 pb-6">
       <div className="mx-auto max-w-7xl">
+           {/* Vehicle heading */}
+        <div className="h-16 flex flex-col justify-center px-4 border-b border-gray-200 mb-8">
+          <h1 className="text-lg font-bold text-gray-900 leading-tight">{vehicle.name}</h1>
+          <p className="text-xs text-gray-500 leading-tight mt-0.5">Shs {vehicle.pricePerDay} per day</p>
+        </div>
 
-        {/* Vehicle heading */}
-        <div className="mb-8">
+     
+        {/* <div className="">
           <h1 className="mt-2 text-4xl font-bold text-gray-900"> {vehicle.name}</h1>
           <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">{vehicle.type}</p>
           <p className="mt-2 text-gray-500"> Shs {vehicle.pricePerDay} per day</p>
-        </div>
+        </div> */}
 
         {/* Gallery */}
 
@@ -50,11 +57,9 @@ const VehicleProfile = () => {
         />
 
         {/* Details */}
-
         <VehicleDetails vehicle={vehicle} />
 
         {/* Booking */}
-
         <VehicleBooking vehicle={vehicle} />
 
       </div>
