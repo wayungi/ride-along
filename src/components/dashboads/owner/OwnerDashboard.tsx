@@ -4,6 +4,7 @@ import VehicleList from "./vehicle/VehicleList";
 import Transactions from "../customer/transactions/Transactions";
 import RentalDetails from "../customer/rental_details/RentalDetails";
 import DashBoardStatCard from "../DashBoardStatCard"
+import ActionsBar from "./vehicle/ActionsBar";
 
 
 const vehicles: Vehicle[]= [
@@ -212,6 +213,10 @@ const OwnerDashboard = () => {
 
         <div>
             <DashBoardStatCard />
+        </div>
+
+        <div>
+            <ActionsBar />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6">
