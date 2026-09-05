@@ -1,5 +1,5 @@
 import { useState } from "react";
-import VehicleList from "../components/VehicleList";
+import VehicleList from "../components/vehicle/VehicleList";
 import type { Vehicle } from "../types/types"
 const vehicles: Vehicle[] = [
   {

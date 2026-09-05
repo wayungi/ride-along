@@ -1,13 +1,7 @@
-import VehicleGallery from "../components/VehicleCallery";
-import VehicleDetails from "../components/VehicleSpecs";
-import VehicleBooking from "../components/VehicleBooking";
+import VehicleGallery from "../components/vehicle/VehicleCallery";
+import VehicleDetails from "../components/vehicle/VehicleSpecs";
+import VehicleBooking from "../components/vehicle/VehicleBooking";
 import type { VehicleInfo } from "../types/types"
-
-// interface VehicleProfileProps {
-//   vehicle: VehicleInfo;
-// }
-
-
 
 const VehicleProfile = () => {
 
@@ -43,8 +37,8 @@ const VehicleProfile = () => {
 
         {/* Vehicle heading */}
         <div className="mb-8">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">{vehicle.type}</p>
           <h1 className="mt-2 text-4xl font-bold text-gray-900"> {vehicle.name}</h1>
+          <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">{vehicle.type}</p>
           <p className="mt-2 text-gray-500"> Shs {vehicle.pricePerDay} per day</p>
         </div>
 
