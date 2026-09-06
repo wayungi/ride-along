@@ -3,10 +3,13 @@ import { Link, useLocation } from "react-router";
 import {
   FaHome,
   FaCar,
+  FaPlus,
   FaUser,
   FaSignOutAlt,
   FaChevronLeft,
   FaChevronRight,
+  FaSearch,
+  FaCheck,
 } from "react-icons/fa";
 
 const Sidebar = () => {
@@ -61,6 +64,23 @@ const Sidebar = () => {
         </Link>
 
         <Link
+          to="/search"
+          className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition
+            ${
+              isActive("/search")
+                ? "bg-blue-50 text-blue-600"
+                : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+            }
+          `}
+        >
+          <FaSearch className="text-lg min-w-[20px]" />
+
+          {!isCollapsed && (
+            <span>Search</span>
+          )}
+        </Link>
+
+        <Link
           to="/vehicle/1"
           className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition
             ${
@@ -90,6 +110,33 @@ const Sidebar = () => {
           {!isCollapsed && <span>Profile</span>}
         </Link>
 
+        <Link
+          to="/vehicles/new"
+          className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition
+            ${
+              isActive("/vehicles/new")
+                ? "bg-blue-50 text-blue-600"
+                : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+            }
+          `}
+        >
+          <FaPlus className="text-lg min-w-[20px]"/>
+          {!isCollapsed && <span>Add Vehicle</span>}
+        </Link>
+
+        <Link
+          to="/vehicles/approve"
+          className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition
+            ${
+              isActive("/vehicles/approve")
+                ? "bg-blue-50 text-blue-600"
+                : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+            }
+          `}
+        >
+          <FaCheck className="text-lg min-w-[20px]"/>
+          {!isCollapsed && <span>Approve Veichle</span>}
+        </Link>
       </nav>
 
       {/* Bottom */}
