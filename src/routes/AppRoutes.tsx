@@ -7,6 +7,8 @@ import Register from '../components/Register'
 import VehicleProfile from '../pages/VehicleProfile'
 import Dashboard from '../pages/Dashboard'
 import Profile from '../pages/Profile'
+import AddVehicle from '../pages/AddVehicle'
+import ApproveVehice from "../pages/ApproveVehicle"
 
 
 const AppRoutes = () => {
@@ -25,6 +27,8 @@ const AppRoutes = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/vehicle/:id" element={<VehicleProfile />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/vehicles/new" element={<AddVehicle  />} />
+         <Route path="/vehicles/approve" element={<ApproveVehice/>} />
       </Route>
 
     </Routes>
