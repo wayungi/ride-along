@@ -4,25 +4,26 @@ import {
   FaTimes,
   FaUser,
   FaCalendarAlt,
-  FaGasPump,
+  FaGasPump ,
 } from "react-icons/fa";
+  import type { VehicleRegistrationRequest } from "../types/types";
 
-interface VehicleRegistrationRequest {
-  id: string;
-  cardId: string;
+// interface VehicleRegistrationRequest {
+//   id: string;
+//   cardId: string;
 
-  name: string;
-  model: string;
-  type: string;
-  fuelType: "Electric" | "Hybrid" | "Petrol" | "Diesel";
-  seats: number;
-  image: string;
-  owner: {
-    username: string;
-  };
-  insuranceExpiry: string;
-  submittedAt: string;
-}
+//   name: string;
+//   model: string;
+//   type: string;
+//   fuelType: "Electric" | "Hybrid" | "Petrol" | "Diesel";
+//   seats: number;
+//   image: string;
+//   owner: {
+//     username: string;
+//   };
+//   insuranceExpiry: string;
+//   submittedAt: string;
+// }
 
 interface VehicleRegistrationRequestsProps {
   vehicles: VehicleRegistrationRequest[];
@@ -30,7 +31,10 @@ interface VehicleRegistrationRequestsProps {
   onReject: (vehicleId: string) => void;
 }
 
-const VehicleRegistrationRequests = ({ vehicles, onApprove, onReject, }: VehicleRegistrationRequestsProps) => {
+const VehicleRegistration = ( /*{ vehicles, onApprove, onReject, }: VehicleRegistrationRequestsProps */) => {
+
+  const vehicles: VehicleRegistrationRequest[] = []
+
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
 
@@ -58,7 +62,7 @@ const VehicleRegistrationRequests = ({ vehicles, onApprove, onReject, }: Vehicle
               </p>
 
               <p className="text-lg font-bold text-gray-900">
-                {vehicles.length}
+                {/* {vehicles.length} */}
               </p>
             </div>
           </div>
@@ -214,7 +218,7 @@ const VehicleRegistrationRequests = ({ vehicles, onApprove, onReject, }: Vehicle
               {/* Reject */}
               <button
                 type="button"
-                onClick={() => onReject(vehicle.id)}
+                //onClick={() => onReject(vehicle.id)}
                 className="flex items-center gap-2 px-3 py-2 rounded-lg border border-red-200 text-red-600 text-sm font-medium hover:bg-red-50 transition"
               >
                 <FaTimes />
@@ -228,7 +232,7 @@ const VehicleRegistrationRequests = ({ vehicles, onApprove, onReject, }: Vehicle
               {/* Approve */}
               <button
                 type="button"
-                onClick={() => onApprove(vehicle.id)}
+                //onClick={() => onApprove(vehicle.id)}
                 className="flex items-center gap-2 px-3 py-2 rounded-lg bg-green-600 text-white text-sm font-medium hover:bg-green-700 transition"
               >
                 <FaCheck />
@@ -250,4 +254,4 @@ const VehicleRegistrationRequests = ({ vehicles, onApprove, onReject, }: Vehicle
   );
 };
 
-export default VehicleRegistrationRequests;
+export default VehicleRegistration;

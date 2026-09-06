@@ -37,3 +37,20 @@ export interface VehicleOwnerInfoProps {
   tripCost: number;
   status: "Available" | "Rented" | "Faulty";
 }
+
+export interface VehicleRegistrationRequest {
+  id: string;
+  cardId: string;
+
+  name: string;
+  model: string;
+  type: string;
+  fuelType: "Electric" | "Hybrid" | "Petrol" | "Diesel";
+  seats: number;
+  image: string;
+  owner: {
+    username: string;
+  };
+  insuranceExpiry: string;
+  submittedAt: string;
+}
