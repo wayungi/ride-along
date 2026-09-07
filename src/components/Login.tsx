@@ -1,14 +1,38 @@
 import { Link } from "react-router";
 import { useState, type SubmitEvent  } from "react";
+import { useNavigate } from "react-router";
+import useAuth from "../context/useAuth";
+
 
 const Login = () => {
+
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+
+  const handleSubmit = async ( e: SubmitEvent) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
 
+    try {
+      await login(email, password);
+      navigate("/dashboard");
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message) 
+      } else {
+        setError("Login failed");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <div className="h-full bg-white flex items-center justify-center px-6">
@@ -80,6 +104,8 @@ const Login = () => {
               />
             </div>
 
+            {error && (<p className="text-red-500">{error}</p> )}
+
             <button
               type="submit"
               className="
@@ -97,7 +123,7 @@ const Login = () => {
                 focus:ring-offset-2
               "
             >
-              Sign in
+              {loading ? "Signing in..." : "Sign in"}
             </button>
           </form>
 
@@ -113,4 +139,3 @@ const Login = () => {
 };
 
 export default Login;
-
