@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import {
   FaHome,
   FaCar,
@@ -11,10 +11,18 @@ import {
   FaSearch,
   FaCheck,
 } from "react-icons/fa";
+import useAuth from "../context/useAuth";
 
 const Sidebar = () => {
+  const {logout} = useAuth();
+  const navigate =  useNavigate()
   const location = useLocation();
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const handleLogout = () => {
+    logout()
+    navigate("/", {replace:true})
+  }
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -143,6 +151,7 @@ const Sidebar = () => {
       <div className="p-3 border-t border-gray-200">
         <button
           type="button"
+          onClick={() => handleLogout()}
           className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 transition"
         >
           <FaSignOutAlt className="text-lg min-w-[20px]" />
