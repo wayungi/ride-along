@@ -1,15 +1,5 @@
 import { jwtDecode } from 'jwt-decode';
-
-interface DecodedToken {
-  email: string;
-  permissions: string [];
-  domain: "CLIENT_SIDE" | "BACK_OFFICE";
-  role_code:  "CUSTOMER" | "ADMIN" | "OWNER";
-  iat: number;
-  exp: number;
-}
-
-
+import type { DecodedToken } from '../types/auth';
 
 export const decodeToken = (token: string): DecodedToken | null => {
   try {
@@ -69,8 +59,6 @@ export const removeToken = (): void => {
 };
 
 
-export const hasPermission = (token: string | null, permission: string): boolean => {
-  if (!token) return false;
-  const authData = decodeToken(token);
-  return authData?.permissions?.includes(permission) ?? false;
+export const hasPermission = (permissions: string[], permission: string): boolean => {
+  return permissions?.includes(permission) ?? false;
 };
