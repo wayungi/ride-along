@@ -24,14 +24,14 @@ const AppRoutes = () => {
       </Route>
 
       {/* authenticated routes */}
-      <Route element={<AppLayout />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/vehicle/:id" element={<VehicleProfile />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/vehicles/new" element={<AddVehicle  />} />
-         <Route path="/vehicles/approve" element={<ApproveVehicle/>} />
-         <Route path="/search" element={<SearchVehicle />} />
-      </Route>
+        <Route element={<AppLayout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/vehicle/:id" element={<VehicleProfile />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/vehicles/new" element={<AddVehicle  />} />
+          <Route path="/vehicles/approve" element={<ApproveVehicle/>} />
+          <Route path="/search" element={<SearchVehicle />} />
+        </Route>
 
     </Routes>
   )
