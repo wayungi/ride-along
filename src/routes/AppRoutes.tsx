@@ -11,6 +11,9 @@ import AddVehicle from '../pages/AddVehicle'
 import ApproveVehicle from "../pages/ApproveVehicle"
 import SearchVehicle from '../pages/SearchVehicle'
 import NotFoundPage from '../pages/NotFound';
+import PrivateRoute from '../components/PrivateRoutes'
+import PublicRoute from '../components/PublicRoutes'
+//import ForgotPassword from '../pages/ForgotPassword'
 
 
 
@@ -18,16 +21,18 @@ const AppRoutes = () => {
   return (
     <Routes>
 
-      {/*  public routes */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />}/>
         <Route path="/home" element={<Home />} />
 
-        <Route path="/login" element={<Login />}/>
-        <Route path="/register" element={<Register />} />
+        <Route element={<PublicRoute />}>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/register" element={<Register />} />
+          {/* <Route path="/password" element={<ForgotPassword />} /> */}
+        </Route>
       </Route>
 
-      {/* authenticated routes */}
+      <Route element={<PrivateRoute/>}>
         <Route element={<AppLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/vehicle/:id" element={<VehicleProfile />} />
@@ -36,8 +41,9 @@ const AppRoutes = () => {
           <Route path="/vehicles/approve" element={<ApproveVehicle/>} />
           <Route path="/search" element={<SearchVehicle />} />
         </Route>
+      </Route>
 
-        <Route path="*" element={<NotFoundPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }
