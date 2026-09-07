@@ -10,6 +10,8 @@ import Profile from '../pages/Profile'
 import AddVehicle from '../pages/AddVehicle'
 import ApproveVehicle from "../pages/ApproveVehicle"
 import SearchVehicle from '../pages/SearchVehicle'
+import NotFoundPage from '../pages/NotFound';
+
 
 
 const AppRoutes = () => {
@@ -19,6 +21,8 @@ const AppRoutes = () => {
       {/*  public routes */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />}/>
+        <Route path="/home" element={<Home />} />
+
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />} />
       </Route>
@@ -33,6 +37,7 @@ const AppRoutes = () => {
           <Route path="/search" element={<SearchVehicle />} />
         </Route>
 
+        <Route path="*" element={<NotFoundPage />} />
     </Routes>
   )
 }
