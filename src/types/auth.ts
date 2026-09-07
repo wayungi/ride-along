@@ -15,14 +15,14 @@ export interface LoginResponse {
   responseMessage: string
 }
 
-export interface JwtPayload {
-  sub: string;
-  email: string;
-  role: UserRole;
-  permissions: string[];
-  iat: number;
-  exp: number;
-}
+// export interface JwtPayload {
+//   sub: string;
+//   email: string;
+//   role: UserRole;
+//   permissions: string[];
+//   iat: number;
+//   exp: number;
+// }
 
 export type UserRole = "USER" | "VEHICLE_OWNER" | "ADMIN";
 

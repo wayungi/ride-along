@@ -1,7 +1,7 @@
 export interface ApiResponse<T> {
-  responseObject: T;
-  responseCode: number;
-  responseMessage: string;
+  returnbject: T;
+  returnCode: number;
+  returnMessage: string;
 }
 
 export class ApiError extends Error {
