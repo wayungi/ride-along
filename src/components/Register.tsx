@@ -1,15 +1,39 @@
 
 import { Link } from "react-router";
 import { useState, type SubmitEvent  } from "react";
+import useAuth from "../context/useAuth";
+import { useNavigate } from "react-router";
+import { ApiError } from "../types/api";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [password, setPassword] = useState("");
+  const { register} =  useAuth()
+  const navigate = useNavigate()
 
-  const handleSubmit = (e: SubmitEvent<HTMLFormElement>)=> {
+  const [email, setEmail] = useState("")
+  const [fname, setFname] = useState("")
+  const [lname, setLname] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+
+  const handleSubmit = async(e: SubmitEvent)=> {
     e.preventDefault();
+    setError("")
+    setLoading(true)
+
+    try {
+      await register (email, password, fname, lname);
+      navigate("/login");
+    } catch (error) {
+      if (error instanceof ApiError) {
+        setError(error.message) 
+      } else {
+        setError("Registration failed. Please try again later");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -126,6 +150,12 @@ const Register = () => {
               />
             </div>
 
+            {error && (
+              <p className="mt-2 text-sm text-red-600">
+                {error}
+              </p>
+            )}
+
 
             <button
               type="submit"
@@ -144,6 +174,8 @@ const Register = () => {
                 focus:ring-offset-2
               "
             >Create account</button>
+
+            <p text-sm text-green-600>{loading ? "Registration in progress" : ""}</p>
 
           </form>
 

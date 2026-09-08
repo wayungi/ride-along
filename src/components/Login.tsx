@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { useState, type SubmitEvent  } from "react";
 import { useNavigate } from "react-router";
 import useAuth from "../context/useAuth";
+import { ApiError } from "../types/api";
 
 
 const Login = () => {
@@ -21,12 +22,12 @@ const Login = () => {
 
     try {
       await login(email, password);
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
-      if (error instanceof Error) {
+      if (error instanceof ApiError) {
         setError(error.message) 
       } else {
-        setError("Login failed");
+        setError("Login failed. Please try again later");
       }
     } finally {
       setLoading(false);
