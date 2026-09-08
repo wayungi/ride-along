@@ -1,6 +1,7 @@
 import { useState } from "react";
 import VehicleList from "../components/vehicle/VehicleList";
 import type { Vehicle } from "../types/types"
+
 const vehicles: Vehicle[] = [
   {
     id: 1,
@@ -12,6 +13,8 @@ const vehicles: Vehicle[] = [
     image:
       "https://images.unsplash.com/photo-1494976388531-d1058494cdd8",
     available: true,
+    status: "",
+    model:""
   },
   {
     id: 2,
@@ -23,6 +26,8 @@ const vehicles: Vehicle[] = [
     image:
       "https://images.unsplash.com/photo-1560958089-b8a1929cea89",
     available: true,
+     status: "",
+    model:""
   },
   {
     id: 3,
@@ -34,6 +39,8 @@ const vehicles: Vehicle[] = [
     image:
       "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf",
     available: true,
+     status: "",
+    model:""
   },
   {
     id: 4,
@@ -45,6 +52,8 @@ const vehicles: Vehicle[] = [
     image:
       "https://images.unsplash.com/photo-1550355291-bbee04a92027",
     available: false,
+     status: "",
+    model:""
   },
   {
     id: 5,
@@ -56,6 +65,8 @@ const vehicles: Vehicle[] = [
     image:
       "https://images.unsplash.com/photo-1542362567-b07e54358753",
     available: true,
+     status: "",
+    model:""
   },
   {
     id: 6,
@@ -67,10 +78,13 @@ const vehicles: Vehicle[] = [
     image:
       "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8",
     available: true,
+     status: "",
+    model:""
   },
 ];
 
 const Home = () => {
+
   const [search, setSearch] = useState("");
 
   const filteredVehicles = vehicles.filter((vehicle) => {
