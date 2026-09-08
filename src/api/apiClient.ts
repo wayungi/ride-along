@@ -1,9 +1,10 @@
 import { ApiError } from "../types/api";
 import { getStoredToken } from "../utils/jwt-utils";
+import type { ApiResponse } from "../types/api";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-export const apiClient = async <T>(endpoint: string, options: RequestInit = {}): Promise<T> => {
+export const apiClient = async <T>(endpoint: string, options: RequestInit = {}): Promise<ApiResponse<T>> => {
 
   const token = getStoredToken();
   const headers = new Headers(options.headers);
@@ -16,29 +17,23 @@ export const apiClient = async <T>(endpoint: string, options: RequestInit = {}):
     const response = await fetch(`${API_URL}${endpoint}`, {
       ...options,
       headers,
-      
-      // : {
-      //   "Content-Type": "application/json",
-      //   ...options.headers,
-      // },
     });
 
-
-    const data = await response.json();
+    const data: ApiResponse<T> = await response.json();
 
     if (!response.ok) {
       throw new ApiError(
         data?.returnMessage || "Something went wrong",
         response.status,
-        data?.responseCode ?? -1
+        data?.returnCode ?? -1
       );
     }
 
     if (data.returnCode !== 0) {
       throw new ApiError(
-        data.responseMessage || "Request failed",
+        data.returnMessage || "Request failed",
         response.status,
-        data.responseCode
+        data.returnCode
       );
     }
 
