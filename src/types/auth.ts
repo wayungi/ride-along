@@ -1,18 +1,21 @@
 export interface LoginRequest {
   SERVICE: string;
   ACTION: string;
-  email: string;
+  username: string;
   password: string;
 }
 
-export interface LoginResponseObject {
-  token: string;
+export interface RegisterRequest {
+  SERVICE: string;
+  ACTION: string;
+  email: string;
+  password: string;
+  firstname: string;
+  lastname: string
 }
 
 export interface LoginResponse {
-  responseObject: LoginResponseObject;
-  responseCode: number;
-  responseMessage: string
+  token: string;
 }
 
 // export interface JwtPayload {
