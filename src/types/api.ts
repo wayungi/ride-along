@@ -1,5 +1,5 @@
 export interface ApiResponse<T> {
-  returnbject: T;
+  returnObject: T;
   returnCode: number;
   returnMessage: string;
 }
@@ -10,7 +10,6 @@ export class ApiError extends Error {
 
   constructor( message: string, status: number, code: number ) {
     super(message);
-
     this.name = "ApiError";
     this.status = status;
     this.code = code;
