@@ -54,3 +54,13 @@ export interface VehicleRegistrationRequest {
   insuranceExpiry: string;
   submittedAt: string;
 }
+
+
+export interface VehicleSearchParams {
+  search?: string;
+  type?: string;
+  fuelType?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  available?: boolean;
+}
