@@ -6,6 +6,10 @@ interface VehicleListProps {
 }
 
 const VehicleList = ({ vehicles }: VehicleListProps) => {
+
+  //console.log(vehicles)
+
+
   if (vehicles.length === 0) {
     return (
       <div className="py-16 text-center">
