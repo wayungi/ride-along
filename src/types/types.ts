@@ -1,3 +1,20 @@
+export interface VehicleRequest {
+  name: string;
+  model: string;
+  vehicleType: string;
+  fuelType: string;
+  seatingCapacity: number;
+  bagSpace: number;
+  pricePerDay: number;
+  consumption: number;
+  transmission: string;
+  status: string;
+  insuranceExpiryDate: string;
+  nextServiceMillage: number;
+}
+
+
+
 export interface Vehicle {
   id: string | number;
   name: string;
@@ -7,7 +24,7 @@ export interface Vehicle {
   pricePerDay: number;
   image: string;
   available: boolean;
-  status: string; //"AVAILABLE" | "BOOKED" | "FAULTY" 
+  status: string; //"AVAILABLE" | "RENTED" | "FAULTY" 
   model: string;
 }
 
